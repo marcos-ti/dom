@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Selecionar Elementos #01</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
+
 <body class="conteudo exercicio">
     <div id="primeiro">#primeiro</div>
     <div>Segundo</div>
     <div class="terceiro ultimo">.terceiro .ultimo</div>
-    <script>              
-        // ...
+    <script>
+        document.getElementById('primeiro').classList.add('destaque')
+
+        const divs = document.getElementsByTagName('div')
+        // Construindo um array para manipular as 'divs' do HTML Collections
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))
+        // Outra forma de construir um array para manipular as 'divs'
+        const divsArray = [...divs]
+        divsArray.forEach(e => e.classList.add('destaque'))
+        // Manipulando as classes
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        for (let e of ultimosElementos) {
+            e.classList.remove('destaque')
+        }
+
+        const colorir = document.getElementsByClassName('terceiro')
+        for (let e of colorir) {
+            e.classList.add('destaque')
+        }
+        // Outra forma
+        const descolorir = document.getElementsByClassName('terceiro')
+        Array.from(descolorir).forEach(e => e.classList.remove('destaque'))
+
+        // Outra forma
+        const divColorir = [...descolorir]
+        divColorir.forEach(e => e.classList.add('destaque'))
     </script>
 </body>
+
 </html>
