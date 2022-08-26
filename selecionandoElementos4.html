@@ -22,7 +22,42 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log()
+        lista.childNodes.log()
+
+        const primeiro = lista.firstChild
+        primeiro.log()
+        // Primeiro elemento após o atual
+        primeiro.nextSibling.log()
+        // Último elemento
+        const ultimo = lista.lastChild
+        ultimo.log()
+        // Anterior a determinado elemento
+        ultimo.previousSibling.log()
+        // Nós filhos
+        lista.children.log()
+        // Primeiro elemento de fato, dentro da lista
+        lista.firstElementChild.log()
+        // Último elemento de fato, dentro da lista
+        lista.lastElementChild.log()
+        // Misturar funções: Anterior ao pai da lista
+        lista.parentNode.previousElementSibling.log()
+        // Misturar funções: Próximo ao pai da lista
+        lista.parentNode.nextElementSibling.log()
+
+        // Pegando o que quer: Precisão maior
+        document.querySelectorAll('div ul li').log()
+
     </script>
 </body>
 
